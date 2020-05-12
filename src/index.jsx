@@ -3,8 +3,6 @@ import ReactDOM from "react-dom";
 
 import { ApolloProvider } from '@apollo/react-hooks';
 import ApolloClient from 'apollo-boost';
-import { HttpLink } from 'apollo-link-http';
-import { gql } from "apollo-boost";
 
 import App from "./App";
 
