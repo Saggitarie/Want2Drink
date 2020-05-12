@@ -1,7 +1,35 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
+import { ApolloProvider } from '@apollo/react-hooks';
+import ApolloClient from 'apollo-boost';
+import { HttpLink } from 'apollo-link-http';
+import { gql } from "apollo-boost";
+
+
+
 
 import App from "./App";
 
-ReactDOM.render(<App/>, document.getElementById("root"));
+const GRAPHQL_BASE_URL = 'http://localhost:4000/graphql';
+
+const client = new ApolloClient({
+  uri: GRAPHQL_BASE_URL,
+});
+
+client
+  .query({
+    query: gql`
+    query{
+      users{
+        first_name
+      }
+    }
+    `
+  })
+  .then(result => console.log(result));
+
+ReactDOM.render(
+  <ApolloProvider client={client}>
+    <App/>
+  </ApolloProvider>, document.getElementById("root"));
