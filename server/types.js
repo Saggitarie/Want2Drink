@@ -9,8 +9,13 @@ type Users {
     email: String!,
     created_at: String!
 }
+
 type Query {
   users: [Users]
+}
+
+type Mutation {
+  addUsers(first_name: String!, last_name: String!, email: String!, created_at: String!): String!
 }
 `;
 // Exports

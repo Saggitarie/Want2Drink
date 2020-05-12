@@ -9,7 +9,8 @@ exports.up = function(knex) {
 
     table.string("email", 50).notNullable();
 
-    table.timestamp("created_at").notNullable().defaultTo(knex.fn.now()); // default to the current time
+    table.string("created_at", 50).notNullable(); // default to the current time
+    // table.string("created_at", 50).notNullable().defaultTo(knex.fn.now()); // default to the current time
   });
 };
 
