@@ -3,15 +3,13 @@
 module.exports = {
   development: {
     client: 'postgresql',
-    connection: {
-      host: process.env.PGHOST,
-      database: process.env.PGDATABASE,
-      user: process.env.DBUSER,
-      password: process.env.PGPASSWORD
-    },
+    connection: process.env.DATABASE_URL || `postgres://kohkishiga:kohkishiga@127.0.0.1:5432/want2drink`,
     pool:{
       min: 2,
       max: 10
+    },
+    seeds: {
+      directory: './seeds/'
     },
     migrations:{
       tableName: "knex_migrations"
