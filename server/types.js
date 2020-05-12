@@ -10,8 +10,18 @@ type Users {
     created_at: String!
 }
 
+type UserLocations{
+    first_name: String!,
+    last_name: String!,
+    longitude: Float!,
+    latitude: Float!,
+    drinking_place_name: String!,
+    location_set_time: String!
+}
+
 type Query {
-  users: [Users]
+  users: [Users],
+  getUsersLocations: [UserLocations]
 }
 
 type Mutation {

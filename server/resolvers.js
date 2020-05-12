@@ -6,6 +6,20 @@ const RESOLVERS = {
       const users = await database('users').select()
       return users
     },
+    getUsersLocations: async () => {
+      const userInfos = await database("drinking_location")
+      .innerJoin("users","drinking_location.user_location_id", "users.id")
+      .select(
+        "users.first_name",
+        "users.last_name",
+        "drinking_location.longitude",
+        "drinking_location.latitude",
+        "drinking_location.drinking_place_name",
+        "drinking_location.location_set_time",
+      )
+
+      return userInfos;
+    }
   },
   Mutation: {
     addUsers: async (_, {first_name, last_name, email, created_at}) => {

@@ -3,8 +3,8 @@ exports.up = function(knex) {
   return knex.schema.createTable("drinking_location", (table) => {
     table.increments().index(); // Auto increments events id
 
-    table.integer("longitude").notNullable();
-    table.integer("latitude").notNullable();
+    table.float("longitude").notNullable();
+    table.float("latitude").notNullable();
 
     table.string("drinking_place_name", 100).notNullable();
 

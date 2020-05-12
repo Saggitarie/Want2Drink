@@ -24,6 +24,7 @@
     "react": "^16.13.1",
     "react-apollo": "^3.1.5",
     "react-dom": "^16.13.1",
+    "react-google-maps": "^9.4.5",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.1"
   },
@@ -34,7 +35,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "migrate": "npx run.env knex migrate:latest --knexfile models/knexfile.js",
-    "rollback": "npx run.env knex migrate:rollback --knexfile models/knexfile.js "
+    "rollback": "npx run.env knex migrate:rollback --knexfile models/knexfile.js",
+    "seed": "knex seed:run --knexfile models/knexfile.js"
   },
   "eslintConfig": {
     "extends": "react-app"
