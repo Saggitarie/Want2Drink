@@ -1,6 +1,8 @@
-import React, {useEffect} from "react";
+import React, {useState, useEffect} from "react";
 import { useQuery } from '@apollo/react-hooks';
 import {gql} from "apollo-boost";
+
+import Map from "../Map";
 
 const GET_USERS = gql`
 query{
@@ -26,22 +28,19 @@ query{
 `;
 
 export default function DrinkingBuddy(){
-  // const {data, loading, error} = useQuery(GET_USERS);
+  // const [userLocationInfo, setUserLocationInfo] = useState("");
   const {data, loading, error} = useQuery(GET_USERS_LOCATIONS);
-
-  useEffect(() => {
-
-  }, []);
 
   if(loading) return <div>Loading</div>;
   if(error) return <div>Error</div>;
 
-  // console.log("all users" + JSON.stringify(data));
-  console.log(data);
+  // useEffect(() => {  setUserLocationInfo(data.getUsersLocations);}, [])
+
 
   return (
     <div>
       DrinkingBuddyList
+      <Map locationInfo={data.getUsersLocations}/>
     </div>
   )
 }
