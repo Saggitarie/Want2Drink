@@ -1,15 +1,15 @@
 import React, {useState} from "react";
 import { GoogleMap, withScriptjs, withGoogleMap, Marker, InfoWindow} from "react-google-maps";
 
-// import mapStyles from "./mapStyles";
+import mapStyles from "./mapStyles";
 
 function MyMap(props){
   const [selectedBar, setSelectedBar] = useState(null);
   return (
     <GoogleMap
-      defaultZoom={10}
+      defaultZoom={13}
       defaultCenter={{lat: 35.6804, lng: 139.7690}}
-      // defaultOptions={{styles: mapStyles}}
+      defaultOptions={{styles: mapStyles}}
     >
       {props.locations.map((location, index) => (
         // console.log("latitude" + location.latitude, "longitude"+ location.longitude)
