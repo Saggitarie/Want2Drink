@@ -17,17 +17,20 @@ const client = new ApolloClient({
   uri: GRAPHQL_BASE_URL,
 });
 
-client
-  .query({
-    query: gql`
-    query{
-      users{
-        first_name
-      }
-    }
-    `
-  })
-  .then(result => console.log(result));
+// client
+//   .query({
+//     mutation: gql`
+//     mutation AddTodo($type: String!) {
+//       addUsers(
+//         first_name: "Sato",
+//         last_name: "Takeru",
+//         email:"takechan@test.com",
+//         created_at:${Date.now()}
+//       )
+//     }
+//     `
+//   })
+//   .then(result => console.log(result));
 
 ReactDOM.render(
   <ApolloProvider client={client}>

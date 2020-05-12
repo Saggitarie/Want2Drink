@@ -1,8 +1,8 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 
 import history from "./history";
-import { useMutation } from '@apollo/react-hooks';
-import { gql } from "apollo-boost";
+import gql from 'graphql-tag';
+import { Mutation } from "react-apollo";
 
 /*
   Needed to write this component in class because
@@ -12,45 +12,35 @@ import { gql } from "apollo-boost";
 
 */
 
-// function addUser(schema){
-//   useMutation(this.ADD_TODO())
-// }
+export default function GoogleAuth(){
+ const [isSignedIn, setIsSignedIn] = useState(null);
+ const [userInfo, setUserInfo] = useState({});
+ const [auth2, setAuth2] = useState({})
 
-class GoogleAuth extends React.Component {
-  state = {
-    isSignedIn: null,
-    userInfo: {}
-  };
-
-  ADD_TODO = () => gql`
-  mutation AddTodo($type: String!) {
-    addUsers(
-      first_name: ${this.state.userInfo.firstName},
-      last_name: ${this.state.userInfo.lastName},
-      email:${this.state.userInfo.email},
-      created_at:${Date.now()}
-    )
-  }
-`;
-  componentDidMount(){
-    window.gapi.load("client:auth2", () => {
-      window.gapi.client.init({
-        clientId: process.env.REACT_APP_GOOGLE_SIGNIN_API_KEY,
-        scope: "email"
-        }).then(() => {
-        this.auth = window.gapi.auth2.getAuthInstance();
-        this.setState({isSignedIn: this.auth.isSignedIn.get()})
-        this.auth.isSignedIn.listen(this.onAuthChange)
-      });
+ useEffect(() => {
+  window.gapi.load("client:auth2", () => {
+    window.gapi.client.init({
+      clientId: process.env.REACT_APP_GOOGLE_SIGNIN_API_KEY,
+      scope: "email"
+      }).then(() => {
+      const auth = window.gapi.auth2.getAuthInstance();
+      setAuth2(auth);
+      setIsSignedIn(auth.isSignedIn.get());
+      auth.isSignedIn.listen(onAuthChange)
     });
-  }
+  });
+ }, []);
 
-  onAuthChange = () => {
-    this.setState({isSignedIn: this.auth.isSignedIn.get()})
-  };
+ useEffect(() => {
+   console.log("is signed in???", isSignedIn);
+ }, [isSignedIn]);
 
-  onSignInClick = () => {
-    const res = this.auth.signIn().then((signInUser) => this.setState({
+ function onAuthChange () {
+   console.log("onChange", auth2.listen)
+};
+
+  function onSignInClick(){
+    auth2.signIn().then((signInUser) => setUserInfo({
       userInfo: {
         firstName: signInUser.Pt.Ad,
         lastName: signInUser.Pt.qU,
@@ -58,37 +48,90 @@ class GoogleAuth extends React.Component {
       }
     }));
 
-    // const [addUsers] = addUser(this.ADD_TODO);
-    // this.setState({userInfo: res});
-    console.log("CurrentUser", this.auth.currentUser.Mw);
-    // console.log(res.Pf.Pt.pW)
-    // console.log(res.Pf.Pt.qU)
-    // console.log(res.Pf.Pt.yu)
-    // this.ADD_TODO()
-  };
+    setIsSignedIn(true);
+};
 
-  onSignOutClick = () => {
-    this.auth.signOut();
-  };
-
-  renderAuthButton(){
-    if(this.state.isSignedIn === null){
+  function renderAuthButton(){
+    if(isSignedIn === null){
       return null;
-    } else if(this.state.isSignedIn){
+    } else if(isSignedIn){
       return history.push("/drinkingbuddy")
     }else {
       return (
-      <button onClick={this.onSignInClick}>Sign In to Drink</button>
+      <button onClick={onSignInClick}>Sign In to Drink</button>
       )
     }
-  }
-
-  render(){
-    return<div>{this.renderAuthButton()}</div>
-  }
 }
 
-export default GoogleAuth;
+  return(
+  <div>
+    <div>{renderAuthButton()}</div>
+  </div>)
+}
+
+// class GoogleAuth extends React.Component {
+//   state = {
+//     isSignedIn: null,
+//     userInfo: {}
+//   };
+
+// //   ADD_USERS = gql`
+// //   mutation AddTodo($type: String!) {
+// //     addUsers(
+// //       first_name: ${this.state.userInfo.firstName},
+// //       last_name: ${this.state.userInfo.lastName},
+// //       email:${this.state.userInfo.email},
+// //       created_at:${Date.now()}
+// //     )
+// //   }
+// // `;
+
+
+//   componentDidMount(){
+
+//   }
+
+  // onAuthChange = () => {
+  //   this.setState({isSignedIn: this.auth.isSignedIn.get()})
+  // };
+
+  // onSignInClick = () => {
+  //   this.auth.signIn().then((signInUser) => this.setState({
+  //     userInfo: {
+  //       firstName: signInUser.Pt.Ad,
+  //       lastName: signInUser.Pt.qU,
+  //       email: signInUser.Pt.yu
+  //     }
+  //   }));
+  // };
+
+//   onSignOutClick = () => {
+//     this.auth.signOut();
+//   };
+
+  // renderAuthButton(){
+  //   if(this.state.isSignedIn === null){
+  //     return null;
+  //   } else if(this.state.isSignedIn){
+  //     return history.push("/drinkingbuddy")
+  //   }else {
+  //     return (
+  //     <button onClick={this.onSignInClick}>Sign In to Drink</button>
+  //     )
+  //   }
+  // }
+
+//   render(){
+//     return(
+//     <div>
+//       {/* <Mutation mutation={() => this.ADD_USERS}> */}
+//       {this.renderAuthButton()}
+//       {/* </Mutation> */}
+//     </div>)
+//   }
+// }
+
+// export default GoogleAuth;
 
 // export default function GoogleAuth(){
 //   const [isSignedIn, setIsSignedIn] = useState(null);

@@ -2,8 +2,6 @@
 const express = require('express');
 // Imports: GraphQL
 const {SERVER} = require('./schema.js');
-
-const client = require("../src/client");
 const { gql } = require('apollo-server');
 
 
