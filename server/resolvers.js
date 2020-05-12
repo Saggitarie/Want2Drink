@@ -19,6 +19,13 @@ const RESOLVERS = {
       )
 
       return userInfos;
+    },
+    checkUser: async (first_name) => {
+      const user = await database('users')
+      .where({first_name: first_name})
+      .select()
+
+      return user;
     }
   },
   Mutation: {

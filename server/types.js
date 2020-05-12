@@ -4,19 +4,19 @@ const { gql } = require('apollo-server');
 // GraphQL: TypeDefs
 const TYPEDEFS = gql`
 type Users {
-    first_name: String!,
-    last_name: String!,
-    email: String!,
-    created_at: String!
+  first_name: String!,
+  last_name: String!,
+  email: String!,
+  created_at: String!
 }
 
 type UserLocations{
-    first_name: String!,
-    last_name: String!,
-    longitude: Float!,
-    latitude: Float!,
-    drinking_place_name: String!,
-    location_set_time: String!
+  first_name: String!,
+  last_name: String!,
+  longitude: Float!,
+  latitude: Float!,
+  drinking_place_name: String!,
+  location_set_time: String!
 }
 
 type DrinkingLocations{
@@ -39,7 +39,8 @@ input Locations{
 
 type Query {
   users: [Users],
-  getUsersLocations: [UserLocations]
+  getUsersLocations: [UserLocations],
+  checkUser(first_name: String!): Users
 }
 
 type Mutation {
