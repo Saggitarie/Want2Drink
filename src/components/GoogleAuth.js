@@ -37,7 +37,7 @@ export default function GoogleAuth(){
 
  function onAuthChange () {
    console.log("onChange", auth2.listen)
-};
+  };
 
   function onSignInClick(){
     auth2.signIn().then((signInUser) => setUserInfo({
@@ -49,7 +49,11 @@ export default function GoogleAuth(){
     }));
 
     setIsSignedIn(true);
-};
+  };
+
+   function onSignOutClick (){
+    this.auth.signOut();
+   };
 
   function renderAuthButton(){
     if(isSignedIn === null){
@@ -68,92 +72,3 @@ export default function GoogleAuth(){
     <div>{renderAuthButton()}</div>
   </div>)
 }
-
-// class GoogleAuth extends React.Component {
-//   state = {
-//     isSignedIn: null,
-//     userInfo: {}
-//   };
-
-// //   ADD_USERS = gql`
-// //   mutation AddTodo($type: String!) {
-// //     addUsers(
-// //       first_name: ${this.state.userInfo.firstName},
-// //       last_name: ${this.state.userInfo.lastName},
-// //       email:${this.state.userInfo.email},
-// //       created_at:${Date.now()}
-// //     )
-// //   }
-// // `;
-
-
-//   componentDidMount(){
-
-//   }
-
-  // onAuthChange = () => {
-  //   this.setState({isSignedIn: this.auth.isSignedIn.get()})
-  // };
-
-  // onSignInClick = () => {
-  //   this.auth.signIn().then((signInUser) => this.setState({
-  //     userInfo: {
-  //       firstName: signInUser.Pt.Ad,
-  //       lastName: signInUser.Pt.qU,
-  //       email: signInUser.Pt.yu
-  //     }
-  //   }));
-  // };
-
-//   onSignOutClick = () => {
-//     this.auth.signOut();
-//   };
-
-  // renderAuthButton(){
-  //   if(this.state.isSignedIn === null){
-  //     return null;
-  //   } else if(this.state.isSignedIn){
-  //     return history.push("/drinkingbuddy")
-  //   }else {
-  //     return (
-  //     <button onClick={this.onSignInClick}>Sign In to Drink</button>
-  //     )
-  //   }
-  // }
-
-//   render(){
-//     return(
-//     <div>
-//       {/* <Mutation mutation={() => this.ADD_USERS}> */}
-//       {this.renderAuthButton()}
-//       {/* </Mutation> */}
-//     </div>)
-//   }
-// }
-
-// export default GoogleAuth;
-
-// export default function GoogleAuth(){
-//   const [isSignedIn, setIsSignedIn] = useState(null);
-//   const [authData, setAuthData] = useState();
-
-//   useEffect(() => {
-//     window.gapi.load("client:auth2", () => {
-//       window.gapi.client.init({
-//         clientId: "438614016365-dtul6b38p01kkq18janveggvu0ornkeh.apps.googleusercontent.com",
-//         scope: "email"
-//       }).then(() => {
-//         const auth = window.gapi.auth2.getAuthInstance();
-//         setAuthData(auth);
-//         setIsSignedIn(auth.isSignedIn.get());
-//       })
-//     })
-//   }, []);
-
-//   useEffect(() => {},[isSignedIn]);
-
-
-//   return (
-//     <div>{renderAuthButton(isSignedIn, authData)}</div>
-//   )
-// }
