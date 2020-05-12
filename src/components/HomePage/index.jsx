@@ -6,8 +6,6 @@ import { useMutation } from '@apollo/react-hooks';
 import GoogleAuth from "../GoogleAuth";
 
 export default function Main(){
-  const [userInfo, setUserInfo] = useState({});
-
   return(
     <div>
         <GoogleAuth/>

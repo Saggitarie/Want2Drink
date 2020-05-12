@@ -18,6 +18,5 @@ type Mutation {
   addUsers(first_name: String!, last_name: String!, email: String!, created_at: String!): String!
 }
 `;
-
 // Exports
 module.exports={ TYPEDEFS };
