@@ -12,7 +12,6 @@ function MyMap(props){
       defaultOptions={{styles: mapStyles}}
     >
       {props.locations.map((location, index) => (
-        // console.log("latitude" + location.latitude, "longitude"+ location.longitude)
         <Marker key={index}
         position={{
           lat:location.latitude,
