@@ -1,80 +1,77 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
+import gql from 'graphql-tag';
+import { useMutation } from '@apollo/react-hooks';
 
 import history from "./history";
 
-/*
-  Needed to write this component in class because
-  functions like onAuthChange needed reference to gapi.auth2.getAuthInstance() object
+const ADD_USERS =  gql`
+mutation ADD_USERS($first_name: String!, $last_name: String!, $email: String!, $created_at: String!){
+  addUsers(
+    first_name: $first_name,
+    last_name: $last_name,
+    email:$email,
+    created_at:$created_at
+  )
+}
+`;
 
-  It was really difficult to implement this in functional component using hooks.
-*/
-class GoogleAuth extends React.Component {
-  state = { isSignedIn: null};
-  componentDidMount(){
+export default function GoogleAuth(){
+  const [isSignedIn, setIsSignedIn] = useState(null);
+  const [userInfo, setUserInfo] = useState({});
+  const [auth2, setAuth2] = useState({});
+
+  const [addUsers] = useMutation(ADD_USERS);
+
+  useEffect(() => {
     window.gapi.load("client:auth2", () => {
       window.gapi.client.init({
         clientId: process.env.REACT_APP_GOOGLE_SIGNIN_API_KEY,
         scope: "email"
         }).then(() => {
-        this.auth = window.gapi.auth2.getAuthInstance();
-        this.setState({isSignedIn: this.auth.isSignedIn.get()})
-        this.auth.isSignedIn.listen(this.onAuthChange)
+        const auth = window.gapi.auth2.getAuthInstance();
+        setAuth2(auth);
+        setIsSignedIn(auth.isSignedIn.get());
+        auth.isSignedIn.listen(onAuthChange)
       });
     });
-  }
+  }, []);
 
-  onAuthChange = () => {
-    this.setState({isSignedIn: this.auth.isSignedIn.get()})
+  useEffect(() => {
+    console.log("is signed in???", isSignedIn);
+
+  }, [isSignedIn]);
+
+  function onAuthChange () {
+    console.log("onChange", auth2.listen)
+    console.log(userInfo);
   };
 
-  onSignInClick = () => {
-    this.auth.signIn();
+  function onSignInClick(){
+    auth2.signIn().then((signInUser) => setUserInfo(signInUser));
+    setIsSignedIn(true);
+    console.log(userInfo);
   };
 
-  onSignOutClick = () => {
+  function onSignOutClick (){
     this.auth.signOut();
   };
 
-  renderAuthButton(){
-    if(this.state.isSignedIn === null){
+  function renderAuthButton(){
+    if(isSignedIn === null){
       return null;
-    } else if(this.state.isSignedIn){
+    } else if(isSignedIn){
       return history.push("/drinkingbuddy")
     }else {
       return (
-      <button onClick={this.onSignInClick}>Sign In to Drink</button>
+      <button onClick={() => {
+        onSignInClick()
+        addUsers({variables:{first_name: "Kohki", last_name: "Shiga", email: "fromClient@gmail.com", created_at:"Today"}})
+      }}>Sign In to Drink</button>
       )
-    }
-  }
-
-  render(){
-    return<div>{this.renderAuthButton()}</div>
   }
 }
-
-export default GoogleAuth;
-
-// export default function GoogleAuth(){
-//   const [isSignedIn, setIsSignedIn] = useState(null);
-//   const [authData, setAuthData] = useState();
-
-//   useEffect(() => {
-//     window.gapi.load("client:auth2", () => {
-//       window.gapi.client.init({
-//         clientId: "438614016365-dtul6b38p01kkq18janveggvu0ornkeh.apps.googleusercontent.com",
-//         scope: "email"
-//       }).then(() => {
-//         const auth = window.gapi.auth2.getAuthInstance();
-//         setAuthData(auth);
-//         setIsSignedIn(auth.isSignedIn.get());
-//       })
-//     })
-//   }, []);
-
-//   useEffect(() => {},[isSignedIn]);
-
-
-//   return (
-//     <div>{renderAuthButton(isSignedIn, authData)}</div>
-//   )
-// }
+  return(
+  <div>
+    <div>{renderAuthButton()}</div>
+  </div>)
+}

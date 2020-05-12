@@ -3,20 +3,38 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@apollo/react-hooks": "^3.1.5",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
+    "apollo-boost": "^0.4.8",
+    "apollo-link-http": "^1.5.17",
+    "apollo-server": "^2.13.1",
+    "apollo-server-express": "^2.13.1",
+    "body-parser": "^1.19.0",
+    "dotenv": "^8.2.0",
     "env-cmd": "^10.1.0",
+    "express": "^4.17.1",
+    "graphql": "^15.0.0",
+    "graphql-tag": "^2.10.3",
+    "graphql-tools": "^5.0.0",
+    "knex": "^0.21.1",
+    "nodemon": "^2.0.3",
+    "pg": "^8.1.0",
     "react": "^16.13.1",
+    "react-apollo": "^3.1.5",
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.1"
   },
   "scripts": {
     "start": "react-scripts start",
+    "dev": "npx run.env node ./server/index.js",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "migrate": "npx run.env knex migrate:latest --knexfile models/knexfile.js",
+    "rollback": "npx run.env knex migrate:rollback --knexfile models/knexfile.js "
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -32,5 +50,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "run.env": "^1.1.0"
   }
 }
