@@ -19,6 +19,13 @@ const RESOLVERS = {
       )
 
       return userInfos;
+    },
+    checkUser: async (first_name) => {
+      const user = await database('users')
+      .where({first_name: first_name})
+      .select()
+
+      return user;
     }
   },
   Mutation: {
@@ -28,7 +35,16 @@ const RESOLVERS = {
       .insert({ first_name, last_name, email, created_at });
 
       return id;
+    },
+    addCurrentLocation: async (_, {longitude, latitude, drinking_place_name, location_set_time, time_expiration, user_location_id}) => {
+      const [id] = await database("drinking_location")
+      .returning("id")
+      .insert({longitude, latitude, drinking_place_name, location_set_time, time_expiration, user_location_id})
+
+      return id;
     }
+
+
   }
 }
 
