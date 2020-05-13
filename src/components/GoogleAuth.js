@@ -2,7 +2,11 @@ import React, {useState, useEffect} from "react";
 import gql from 'graphql-tag';
 import { useMutation } from '@apollo/react-hooks';
 
+import { Button, Card, Icon, Image  } from 'semantic-ui-react'
+
 import history from "./history";
+
+import "./GoogleAuth.scss";
 
 const ADD_USERS =  gql`
 mutation ADD_USERS($first_name: String!, $last_name: String!, $email: String!, $created_at: String!){
@@ -63,15 +67,21 @@ export default function GoogleAuth(){
       return history.push("/drinkingbuddy")
     }else {
       return (
-      <button onClick={() => {
+      <Button onClick={() => {
         onSignInClick()
         addUsers({variables:{first_name: "Kohki", last_name: "Shiga", email: "fromClient@gmail.com", created_at:"Today"}})
-      }}>Sign In to Drink</button>
+      }}color='google plus'>
+        <Icon name='google plus' /> Sign In to Drink
+      </Button>
+      // <button onClick={() => {
+      //   onSignInClick()
+      //   addUsers({variables:{first_name: "Kohki", last_name: "Shiga", email: "fromClient@gmail.com", created_at:"Today"}})
+      // }}>Sign In to Drink</button>
       )
   }
 }
   return(
-  <div>
+  <div className="google__button">
     <div>{renderAuthButton()}</div>
   </div>)
 }

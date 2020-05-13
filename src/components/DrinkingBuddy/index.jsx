@@ -5,7 +5,7 @@ import BarDropdown from "../DropDown";
 import { Button, Card, Icon, Image  } from 'semantic-ui-react'
 
 import Map from "../Map";
-import { Dropdown } from "semantic-ui-react";
+import "./DrinkingBuddy.scss";
 
 const GET_USERS = gql`
 query{
@@ -119,13 +119,20 @@ export default function DrinkingBuddy(){
   if(error) return <div>Error</div>;
 
   return (
-    <div>
-      DrinkingBuddyList
-      <BarDropdown setSelectedBar={setSelectedBar}/>
-      <Button onClick={() => locationSelected()}>Add Location</Button>
-      <Map locationInfo={data.getUsersLocations}/>
+    <div className="drinking-buddy">
+      <p className="drinking-buddy__title">Drinking Buddies</p>
+      <div>
+        <BarDropdown setSelectedBar={setSelectedBar}/>
+      </div>
+      <div>
+        <Button onClick={() => locationSelected()}>Set your drinking place</Button>
+      </div>
+
+      <div className="drinking-buddy__map">
+        <Map locationInfo={data.getUsersLocations}/>
+      </div>
+      <div className="users__profile">
       {data.getUsersLocations.map((user, index) => {
-        // /What2Drink/assets/1.jpg
         return (
         <Card key={index}>
           <Image src={`/${index + 1}.jpg`} wrapped ui={false} />
@@ -146,6 +153,7 @@ export default function DrinkingBuddy(){
           </Card.Content>
         </Card>)
       })}
+      </div>
     </div>
   )
 }
