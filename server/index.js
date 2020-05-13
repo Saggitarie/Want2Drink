@@ -2,7 +2,8 @@
 const express = require('express');
 // Imports: GraphQL
 const {SERVER} = require('./schema.js');
-const { gql } = require('apollo-server');
+
+require('dotenv').config();
 
 const APP = express();
 

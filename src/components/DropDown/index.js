@@ -7,7 +7,7 @@ const barOptions = [
   { key: 'bg', value: 'Bar Ghetto', text: 'Bar Ghetto' },
   { key: 'at', value: 'Aoyama Tunnel', text: 'Aoyama Tunnel' },
   { key: 'b8c', value: '8bit cafe', text: '8bit cafe' },
-  { key: 'bgz', value: 'Bar Ginza', text: 'Bar Ginza' },
+  { key: 'bgz', value: '300 Bar Ginza', text: 'Bar Ginza' },
 ]
 
 const BarDropdown = ({setSelectedBar}) => {

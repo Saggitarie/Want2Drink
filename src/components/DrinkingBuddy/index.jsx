@@ -2,7 +2,7 @@ import React, {useState, useEffect} from "react";
 import { useQuery, useMutation } from '@apollo/react-hooks';
 import {gql, toPromise} from "apollo-boost";
 import BarDropdown from "../DropDown";
-import { Button } from 'semantic-ui-react'
+import { Button, Card, Icon, Image  } from 'semantic-ui-react'
 
 import Map from "../Map";
 import { Dropdown } from "semantic-ui-react";
@@ -124,6 +124,28 @@ export default function DrinkingBuddy(){
       <BarDropdown setSelectedBar={setSelectedBar}/>
       <Button onClick={() => locationSelected()}>Add Location</Button>
       <Map locationInfo={data.getUsersLocations}/>
+      {data.getUsersLocations.map((user, index) => {
+        // /What2Drink/assets/1.jpg
+        return (
+        <Card key={index}>
+          <Image src={`/${index + 1}.jpg`} wrapped ui={false} />
+          <Card.Content>
+            <Card.Header>{`${user.first_name} ${user.last_name}`}</Card.Header>
+            <Card.Meta>
+              <span className='date'>Wanna Drink?</span>
+            </Card.Meta>
+            <Card.Description>
+              {`Drinking at ${user.drinking_place_name}`}
+            </Card.Description>
+          </Card.Content>
+          <Card.Content extra>
+            <a>
+              <Icon name='time' />
+              {`Started Drinking from ${user.location_set_time}`}
+            </a>
+          </Card.Content>
+        </Card>)
+      })}
     </div>
   )
 }
