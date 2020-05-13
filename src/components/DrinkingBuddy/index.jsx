@@ -2,10 +2,10 @@ import React, {useState, useEffect} from "react";
 import { useQuery, useMutation } from '@apollo/react-hooks';
 import {gql, toPromise} from "apollo-boost";
 import BarDropdown from "../DropDown";
-import { Button } from 'semantic-ui-react'
+import { Button, Card, Icon, Image  } from 'semantic-ui-react'
 
 import Map from "../Map";
-import { Dropdown } from "semantic-ui-react";
+import "./DrinkingBuddy.scss";
 
 const GET_USERS = gql`
 query{
@@ -119,11 +119,41 @@ export default function DrinkingBuddy(){
   if(error) return <div>Error</div>;
 
   return (
-    <div>
-      DrinkingBuddyList
-      <BarDropdown setSelectedBar={setSelectedBar}/>
-      <Button onClick={() => locationSelected()}>Add Location</Button>
-      <Map locationInfo={data.getUsersLocations}/>
+    <div className="drinking-buddy">
+      <p className="drinking-buddy__title">Drinking Buddies</p>
+      <div>
+        <BarDropdown setSelectedBar={setSelectedBar}/>
+      </div>
+      <div>
+        <Button onClick={() => locationSelected()}>Set your drinking place</Button>
+      </div>
+
+      <div className="drinking-buddy__map">
+        <Map locationInfo={data.getUsersLocations}/>
+      </div>
+      <div className="users__profile">
+      {data.getUsersLocations.map((user, index) => {
+        return (
+        <Card key={index}>
+          <Image src={`/${index + 1}.jpg`} wrapped ui={false} />
+          <Card.Content>
+            <Card.Header>{`${user.first_name} ${user.last_name}`}</Card.Header>
+            <Card.Meta>
+              <span className='date'>Wanna Drink?</span>
+            </Card.Meta>
+            <Card.Description>
+              {`Drinking at ${user.drinking_place_name}`}
+            </Card.Description>
+          </Card.Content>
+          <Card.Content extra>
+            <a>
+              <Icon name='time' />
+              {`Started Drinking from ${user.location_set_time}`}
+            </a>
+          </Card.Content>
+        </Card>)
+      })}
+      </div>
     </div>
   )
 }
