@@ -1,3 +1,5 @@
+// const knex = require("../../knexfile.js")
+
 module.exports = (knex) => {
   return {
     users: require("./users")(knex),

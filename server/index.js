@@ -3,8 +3,6 @@ const express = require('express');
 // Imports: GraphQL
 const {SERVER} = require('./schema.js');
 
-require('dotenv').config();
-
 const APP = express();
 
 // Middleware: GraphQL

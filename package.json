@@ -38,9 +38,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "migrate": "npx run.env knex migrate:latest --knexfile models/knexfile.js",
-    "rollback": "npx run.env knex migrate:rollback --knexfile models/knexfile.js",
-    "seed": "knex seed:run --knexfile models/knexfile.js"
+    "migrate": "npx knex migrate:latest --knexfile ./knexfile.js",
+    "rollback": "npx knex migrate:rollback --knexfile ./knexfile.js",
+    "seed": "knex seed:run --knexfile ./knexfile.js"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -51,6 +51,7 @@
       "not dead",
       "not op_mini all"
     ],
+    "proxy": "http://localhost:4000",
     "development": [
       "last 1 chrome version",
       "last 1 firefox version",

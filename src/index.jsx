@@ -6,6 +6,7 @@ import ApolloClient from 'apollo-boost';
 
 import App from "./App";
 
+// const GRAPHQL_BASE_URL = '/graphql';
 const GRAPHQL_BASE_URL = 'http://localhost:4000/graphql';
 
 const client = new ApolloClient({
