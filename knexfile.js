@@ -3,7 +3,7 @@ require('dotenv').config();
 module.exports = {
   development: {
     client: 'pg',
-    connection: process.env.DATABASE_URL || `postgres://${process.env.DBUSER}:${process.env.PGPASSWORD}@127.0.0.1:5432/want2drink`,
+    connection: process.env.DATABASE_URL || `postgres://${process.env.DBUSER}:${process.env.PGPASSWORD}@${process.env.PGHOST}:${process.env.PGPORT}/${process.env.PGDATABASE}`,
     migrations: {
       directory: './models/migrations'
     },
@@ -15,7 +15,7 @@ module.exports = {
 
   test: {
     client: 'pg',
-    connection: process.env.DATABASE_URL || `postgres://${process.env.DBUSER}:${process.env.PGPASSWORD}@127.0.0.1:5432/want2drink`,
+    connection: process.env.DATABASE_URL || `postgres://${process.env.DBUSER}:${process.env.PGPASSWORD}@${process.env.PGHOST}:${process.env.PGPORT}/${process.env.PGDATABASE}`,
     migrations: {
       directory: './models/migrations'
     },
