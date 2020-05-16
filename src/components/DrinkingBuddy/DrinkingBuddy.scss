@@ -26,7 +26,7 @@
 
   //273.5px
   grid-template-columns: repeat(auto-fit, minmax(273.5px, 1fr));
-  grid-auto-rows: 371.2px;
+  grid-auto-rows: auto;
 
   transform: translateY(3rem);
 }
