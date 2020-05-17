@@ -21,12 +21,12 @@ const path = require('path');
 const PORT = process.env.BACKPORT || 4000;
 
 // Express: Listener
-// APP.listen(PORT, () => {
-//   console.log(`The server has started on port: ${PORT}`);
-//   console.log(`${process.env.REACT_APP_HEROKU_HOST}:${PORT}/graphql`);
-// });
+APP.listen(PORT, () => {
+  console.log(`The server has started on port: ${PORT}`);
+  console.log(`${process.env.REACT_APP_HEROKU_HOST}:${PORT}/graphql`);
+});
 
-APP
-.listen({ port: process.env.BACKPORT || 4000 }, ()=> {
-  console.log(`🚀 app running`)
-})
+// APP
+// .listen({ port: process.env.BACKPORT || 4000 }, ()=> {
+//   console.log(`🚀 app running`)
+// })
