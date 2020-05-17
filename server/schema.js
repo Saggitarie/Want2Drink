@@ -9,7 +9,7 @@ const SERVER = new ApolloServer({
   typeDefs: TYPEDEFS,
   resolvers: RESOLVERS,
   playground: {
-    endpoint: `http://localhost:4000/graphql`,
+    endpoint: `${process.env.HOST}:${process.env.PORT}/graphql`,
     settings: {
       'editor.theme': 'light'
     }
