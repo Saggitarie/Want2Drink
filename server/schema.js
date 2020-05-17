@@ -14,7 +14,8 @@ const SERVER = new ApolloServer({
     settings: {
       'editor.theme': 'light'
     }
-  }
+  },
+  introspection: true
 });
 
 // Exports
