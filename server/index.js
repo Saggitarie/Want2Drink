@@ -7,11 +7,15 @@ const APP = express();
 const path = require('path');
 
 if (process.env.NODE_ENV === 'production') {
-	APP.use(express.static('client/build'));
+  // Exprees will serve up production assets
+  APP.use(express.static('build'));
+
+  // Express serve up index.html file if it doesn't recognize route
+  const path = require('path');
+  APP.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+  });
 }
-APP.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '/client/build', 'index.html'))
-});
 
 // Middleware: GraphQL
   SERVER.applyMiddleware({
