@@ -21,7 +21,7 @@ if(process.env.NODE_ENV === "development"){
 // const GRAPHQL_BASE_URL = `${process.env.REACT_APP_LOCAL_HOST}:${PORT}/graphql` ;
 
 const client = new ApolloClient({
-  uri: GRAPHQL_BASE_URL,
+  uri: `https://want2drink.herokuapp.com:${process.env.PORT}/graphql`,
 });
 
 ReactDOM.render(
