@@ -6,9 +6,18 @@ import ApolloClient from 'apollo-boost';
 
 import App from "./App";
 
+let GRAPHQL_BASE_URL;
 const PORT = process.env.PORT || 4000;
+if(process.env.NODE_ENV === "development"){
+  GRAPHQL_BASE_URL = `${process.env.REACT_APP_LOCAL_HOST}:${PORT}/graphql` ;
+}else {
+  GRAPHQL_BASE_URL = `${process.env.REACT_APP_HEROKU_HOST}:${PORT}/graphql` ;
+}
+// const HOST = process.env.HEROKU_HOST || process.env.LOCAL_HOST;
+// const HOST = process.env.LOCAL_HOST;
+
 // const GRAPHQL_BASE_URL = '/graphql';
-const GRAPHQL_BASE_URL = `http://localhost:${PORT}/graphql`;
+// const GRAPHQL_BASE_URL = `${process.env.REACT_APP_LOCAL_HOST}:${PORT}/graphql` ;
 
 const client = new ApolloClient({
   uri: GRAPHQL_BASE_URL,
