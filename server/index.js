@@ -11,9 +11,10 @@ if (process.env.NODE_ENV === 'production') {
   APP.use(express.static('build'));
 
   // Express serve up index.html file if it doesn't recognize route
-  const path = require('path');
+  // const path = require('path');
+  //'/app/build/index.html'
   APP.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+    res.sendFile(path.join("/", "app","build", "index.html"));
   });
 }
 
