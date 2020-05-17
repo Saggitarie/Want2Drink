@@ -15,7 +15,7 @@ APP.get('*', (req, res) => {
 
 // Middleware: GraphQL
   SERVER.applyMiddleware({
-  path: "/graphql"
+  path: "/graphql",
   app: APP
 });
 // Express: Port
