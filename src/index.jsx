@@ -7,7 +7,7 @@ import ApolloClient from 'apollo-boost';
 import App from "./App";
 
 let GRAPHQL_BASE_URL;
-const BACKPORT = process.env.BACKPORT || 4000;
+// const BACKPORT = process.env.BACKPORT || 4000;
 if(process.env.NODE_ENV === "development"){
   GRAPHQL_BASE_URL = `${process.env.REACT_APP_LOCAL_HOST}:${process.env.BACKPORT}/graphql` ;
   // GRAPHQL_BASE_URL = `${process.env.REACT_APP_HEROKU_HOST}:${PORT}/graphql` ;
