@@ -21,7 +21,7 @@ const path = require('path');
 const PORT = process.env.PORT || 4000;
 
 // Express: Listener
-APP.listen(PORT, () => {
+APP.listen(process.env.PORT, () => {
   console.log(`The server has started on port: ${PORT}`);
   console.log(`${process.env.REACT_APP_HEROKU_HOST}:${PORT}/graphql`);
 });
