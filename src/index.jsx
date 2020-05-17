@@ -9,10 +9,10 @@ import App from "./App";
 let GRAPHQL_BASE_URL;
 const BACKPORT = process.env.PORT || 4000;
 if(process.env.NODE_ENV === "development"){
-  GRAPHQL_BASE_URL = `${process.env.REACT_APP_LOCAL_HOST}:${BACKPORT}/graphql` ;
+  GRAPHQL_BASE_URL = `https://want2drink.herokuapp.com:${BACKPORT}/graphql` ;
   // GRAPHQL_BASE_URL = `${process.env.REACT_APP_HEROKU_HOST}:${PORT}/graphql` ;
 }else {
-  GRAPHQL_BASE_URL = `${process.env.REACT_APP_HEROKU_HOST}:${BACKPORT}/graphql`;
+  GRAPHQL_BASE_URL = `https://want2drink.herokuapp.com:${BACKPORT}/graphql`;
 }
 // const HOST = process.env.HEROKU_HOST || process.env.LOCAL_HOST;
 // const HOST = process.env.LOCAL_HOST;
