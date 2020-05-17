@@ -28,7 +28,7 @@ const PORT = process.env.PORT || 4000;
 
 // Express: Listener
 APP
-.listen({ port: process.env.PORT || 4000 }, ()=> {
+.listen(4000, ()=> {
   console.log(`🚀 app running on ${process.env.PORT}`)
 })
 
