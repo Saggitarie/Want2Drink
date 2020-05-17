@@ -4,7 +4,7 @@ const express = require('express');
 const {SERVER} = require('./schema.js');
 
 const APP = express();
-const path = require('path');
+// const path = require('path');
 
 // if (process.env.NODE_ENV === 'production') {
 // 	APP.use(express.static('client/build'));
@@ -15,6 +15,7 @@ const path = require('path');
 
 // Middleware: GraphQL
   SERVER.applyMiddleware({
+  path: '/graphql',
   app: APP
 });
 // Express: Port
