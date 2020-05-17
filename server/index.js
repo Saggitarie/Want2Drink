@@ -4,14 +4,14 @@ const express = require('express');
 const {SERVER} = require('./schema.js');
 
 const APP = express();
-// const path = require('path');
+const path = require('path');
 
-// if (process.env.NODE_ENV === 'production') {
-// 	APP.use(express.static('client/build'));
-// }
-// APP.get('*', (req, res) => {
-//   res.sendFile(path.join(__dirname, '/client/build', 'index.html'))
-// });
+if (process.env.NODE_ENV === 'production') {
+	APP.use(express.static('client/build'));
+}
+APP.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '/client/build', 'index.html'))
+});
 
 // Middleware: GraphQL
   SERVER.applyMiddleware({
