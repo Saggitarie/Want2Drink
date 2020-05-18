@@ -27,12 +27,12 @@ if (process.env.NODE_ENV === 'production') {
 const PORT = process.env.PORT || 4000;
 
 // Express: Listener
-APP
-.listen(4000, ()=> {
-  console.log(`🚀 app running on ${process.env.PORT}`)
-})
-
 // APP
-// .listen({ port: process.env.BACKPORT || 4000 }, ()=> {
+// .listen({ port: process.env.PORT || 4000 }, ()=> {
 //   console.log(`🚀 app running`)
 // })
+
+APP
+.listen({ port: process.env.PORT || 4000 }, ()=> {
+  console.log(`🚀 app running on ${process.env.PORT}`)
+})
