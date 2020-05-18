@@ -12,7 +12,6 @@
     "apollo-server": "^2.13.1",
     "apollo-server-express": "^2.13.1",
     "body-parser": "^1.19.0",
-    "bootstrap": "^4.5.0",
     "dotenv": "^8.2.0",
     "env-cmd": "^10.1.0",
     "express": "^4.17.1",
@@ -33,17 +32,10 @@
     "semantic-ui-react": "^0.88.2"
   },
   "scripts": {
-    "start": "PORT=3000 react-scripts start start",
     "dev": "node ./server/index.js",
-    "build": "PORT=3000 react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
     "migrate": "npx knex migrate:latest --knexfile ./knexfile.js",
     "rollback": "npx knex migrate:rollback --knexfile ./knexfile.js",
     "seed": "knex seed:run --knexfile ./knexfile.js"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
   },
   "browserslist": {
     "production": [
@@ -56,8 +48,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "run.env": "^1.1.0"
   }
 }
