@@ -4,10 +4,10 @@
 
 <h3 align="center">Duo Project by Carlos Salazar and  Kohki Shiga</h3>
 
-# 🎥 Movie M8s
+# 🍹 Want2Drink
 
 <p align="left">
- <img width=200px height=px src="./public/MovieM8SLogo.png"/>
+ <img width=200px height=px src="./want2drinktop.png"/>
 </p>
 
 
