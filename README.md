@@ -1,8 +1,6 @@
 <p align="center">
- <img width=500px height=px src="./public/cc.png"/>
+ <img width=500px height=px src="./cc.png"/>
 </p>
-
-<h3 align="center">Duo Project by Carlos Salazar and  Kohki Shiga</h3>
 
 # 🍹 Want2Drink
 
@@ -11,7 +9,7 @@
 </p>
 
 
-**A mobile-friendly app that lets you swipe left to dismiss a movie if you’re not interested in watching it, or right to save it in your “To Watch” list.**
+**Social matching app for users to meet drinking partner by location.**
 
 ## Getting Started (Installation)
 
