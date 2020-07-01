@@ -3,12 +3,6 @@
 </p>
 
 # 🍹 Want2Drink
-
-<p align="left">
- <img width=200px height=px src="./want2drinktop.png"/>
-</p>
-
-
 **Social matching app for users to meet drinking partner by location.**
 
 ## Getting Started (Installation)
@@ -33,7 +27,7 @@ yarn start
 ## ✈️ Deployment
 
 <p align="center">
- <img width=200px height=px src="./public/mobile-login.png"/>
+ <img width=400px height=px src="./want2drinktop.png"/>
 </p>
 
  <h4 align="center">You can visit our site here: https://want2drink.herokuapp.com/ </h4>
