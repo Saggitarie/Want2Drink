@@ -15,17 +15,17 @@
 
 ### Step 1
 ```
-git clone https://github.com/CarlosIUSalazar/MovieM8S-Test.git
+git clone https://github.com/Saggitarie/Want2Drink.git
 ```
 
 ### Step 1
 ```
-npm install
+yarn install
 ```
 
 ### Step 2
 ```
-npm run start
+yarn start
 ```
 
 
@@ -36,21 +36,19 @@ npm run start
  <img width=200px height=px src="./public/mobile-login.png"/>
 </p>
 
- <h4 align="center">You can visit our site here: http://www.moviem8s.com/ </h4>
+ <h4 align="center">You can visit our site here: https://want2drink.herokuapp.com/ </h4>
 
 
 ## 🏗️Built With
 
 -   [React](https://reactjs.org/)  - Frontend Javascript Framework
 -   [SCSS](https://sass-lang.com/)  - CSS Extension Language
--   [AWS Amplify](https://aws.amazon.com/amplify/)  - Development platform for building secure, scalable mobile and web applications
-- [Firebase](https://firebase.google.com/) - NoSQL Database
+-   [Node.js](https://nodejs.org/en/)  - JavaScript runtime built on Chrome's V8 JavaScript engine.
+-   [GraphQL](https://graphql.org/) - a query language for your API, and a server-side runtime for executing queries by using a type system you define for your data
+-   [Heroku](https://graphql.org/) - a cloud platform as a service (PaaS) supporting several programming languages
 
 ## 🤝 Contributors / Acknowledgments
-
-- [Carlos Salazar](https://github.com/CarlosIUSalazar)
-
 - [Kohki Shiga](https://github.com/CarlosIUSalazar)
 
 ## Summary
-Round of Applause 👏👏👏 to Carlos and Kohki for building this app within 4 weeks. We really enjoyed using useSpring hooks to imitiate the swiping movement on screen. We are planning to improve on this app so that it can handle multiple users. Sit tight for our next update!!! 💪
+Made with passion and love within 3 days. Go ahead and find your drinking partners nearby 💪
