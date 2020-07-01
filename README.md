@@ -30,7 +30,7 @@ yarn start
  <img width=400px height=px src="./want2drinktop.png"/>
 </p>
 
- <h4 align="center">You can visit our site here: https://want2drink.herokuapp.com/ </h4>
+ <h4 align="center">You can visit this site here: https://want2drink.herokuapp.com/ </h4>
 
 
 ## 🏗️Built With
