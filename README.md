@@ -1,48 +1,30 @@
-<p align="center">
- <img width=500px height=px src="./cc.png"/>
-</p>
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-# 🍹 Want2Drink
-**Social matching app for users to meet drinking partner by location.**
+## Getting Started
 
-## Getting Started (Installation)
+First, run the development server:
 
-### Step 1
-```
-git clone https://github.com/Saggitarie/Want2Drink.git
+```bash
+npm run dev
+# or
+yarn dev
 ```
 
-### Step 1
-```
-yarn install
-```
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-### Step 2
-```
-yarn start
-```
+You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
 
+## Learn More
 
+To learn more about Next.js, take a look at the following resources:
 
-## ✈️ Deployment
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-<p align="center">
- <img width=400px height=px src="./want2drinktop.png"/>
-</p>
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
- <h4 align="center">You can visit this site here: https://want2drink.herokuapp.com/ </h4>
+## Deploy on Vercel
 
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/import?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-## 🏗️Built With
-
--   [React](https://reactjs.org/)  - Frontend Javascript Framework
--   [SCSS](https://sass-lang.com/)  - CSS Extension Language
--   [Node.js](https://nodejs.org/en/)  - JavaScript runtime built on Chrome's V8 JavaScript engine.
--   [GraphQL](https://graphql.org/) - a query language for your API, and a server-side runtime for executing queries by using a type system you define for your data
--   [Heroku](https://graphql.org/) - a cloud platform as a service (PaaS) supporting several programming languages
-
-## 🤝 Contributors / Acknowledgments
-- [Kohki Shiga](https://github.com/CarlosIUSalazar)
-
-## Summary
-Made with passion and love within 3 days. Go ahead and find your drinking partners nearby 💪
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
