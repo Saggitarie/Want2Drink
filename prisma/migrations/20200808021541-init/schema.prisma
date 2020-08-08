@@ -1,0 +1,71 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url = "***"
+}
+
+model Post {
+  id        Int      @default(autoincrement()) @id
+  title     String
+  createdAt DateTime @default(now())
+  content   String?
+  published Boolean  @default(false)
+  authorId  Int
+  user      User     @relation(fields: [authorId], references: [id])
+
+  @@map(name: "Post")
+}
+
+model Profile {
+  id     Int     @default(autoincrement()) @id
+  bio    String?
+  userId Int     @unique
+  user   User    @relation(fields: [userId], references: [id])
+
+  @@map(name: "Profile")
+}
+
+model User {
+  id      Int      @default(autoincrement()) @id
+  name    String?
+  email   String   @unique
+  posts    Post[]
+  profile Profile?
+
+  @@map(name: "User")
+}
+
+model drinking_location {
+  id                  Int      @default(autoincrement()) @id
+  longitude           Float
+  latitude            Float
+  drinking_place_name String
+  location_set_time   DateTime @default(now())
+  time_expiration     Boolean?
+  user_location_id    Int?
+  users               users?   @relation(fields: [user_location_id], references: [id])
+}
+
+model knex_migrations {
+  id             Int       @default(autoincrement()) @id
+  name           String?
+  batch          Int?
+  migration_time DateTime?
+}
+
+model knex_migrations_lock {
+  index     Int  @default(autoincrement()) @id
+  is_locked Int?
+}
+
+model users {
+  id                Int                 @default(autoincrement()) @id
+  first_name        String
+  last_name         String
+  email             String
+  created_at        String
+  drinking_location drinking_location[]
+}
