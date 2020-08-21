@@ -1,3 +1,14 @@
-import React from "react";
+import { NextPage } from 'next';
 
-export default () => <div>Hello World</div>;
+const IndexPage: NextPage = () => (
+  <div>
+    <h1>
+      Hello Next.js
+      <span role="img" aria-label="Waving Hand">
+        👋
+      </span>
+    </h1>
+  </div>
+);
+
+export default IndexPage;
