@@ -11,7 +11,7 @@
   },
   "lint-staged": {
     "*.{js,jsx}": [
-      "eslint"
+      "eslint components interfaces pages --ext .ts,.tsx"
     ],
     "*.{css,scss}": [
       "stylelint"
