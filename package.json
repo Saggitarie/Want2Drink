@@ -1,0 +1,34 @@
+{
+  "name": "with-typescript",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start",
+    "type-check": "tsc"
+  },
+  "lint-staged": {
+    "src/**/*.{ts,tsx}": "npm run lint:fix"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "repository": "https://github.com/Saggitarie/Want2Drink.git",
+  "author": "Saggitarie <saggitarie@gmail.com>",
+  "dependencies": {
+    "husky": "^4.2.5",
+    "lint-staged": "^10.2.11",
+    "next": "latest",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0"
+  },
+  "devDependencies": {
+    "@types/node": "^12.12.21",
+    "@types/react": "^16.9.16",
+    "@types/react-dom": "^16.9.4",
+    "typescript": "^4.0.2"
+  },
+  "license": "ISC"
+}
