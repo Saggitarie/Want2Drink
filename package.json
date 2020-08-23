@@ -10,7 +10,7 @@
     "lint:fix": "npm run lint -- --fix"
   },
   "lint-staged": {
-    "src/**/*.{ts,tsx}": "npm run lint:fix"
+    "/": "npm run lint:fix"
   },
   "husky": {
     "hooks": {
