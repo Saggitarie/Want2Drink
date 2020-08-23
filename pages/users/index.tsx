@@ -10,7 +10,6 @@ type Props = {
   items: User[];
 };
 
-// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 const WithStaticProps = ({ items }: Props) => (
   <Layout title="Users List | Next.js + TypeScript Example">
     <h1>Users List</h1>
