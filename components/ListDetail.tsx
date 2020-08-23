@@ -6,6 +6,7 @@ type ListDetailProps = {
   item: User;
 };
 
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 const ListDetail = ({ item: user }: ListDetailProps) => (
   <div>
     <h1>Detail for {user.name}</h1>

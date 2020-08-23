@@ -10,6 +10,7 @@ type Props = {
   errors?: string;
 };
 
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 const StaticPropsDetail = ({ item, errors }: Props) => {
   if (errors) {
     return (

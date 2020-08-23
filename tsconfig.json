@@ -10,14 +10,17 @@
     "module": "esnext",
     "moduleResolution": "node",
     "noEmit": true,
+    "plugins": [{ "name": "nexus/typescript-language-service" }],
+    "rootDir": ".",
     "noFallthroughCasesInSwitch": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "strict": true,
+    "typeRoots": ["node_modules/@types", "types"],
     "target": "esnext"
   },
   "exclude": ["node_modules"],
-  "include": ["**/*.ts", "**/*.tsx"]
+  "include": ["**/*.ts", "**/*.tsx", ".", "types.d.ts"]
 }
