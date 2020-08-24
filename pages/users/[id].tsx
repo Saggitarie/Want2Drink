@@ -4,13 +4,14 @@ import { User } from '../../interfaces';
 import { sampleUserData } from '../../utils/sample-data';
 import Layout from '../../components/Layout';
 import ListDetail from '../../components/ListDetail';
+import { ReactElement } from 'react';
 
 type Props = {
   item?: User;
   errors?: string;
 };
 
-const StaticPropsDetail = ({ item, errors }: Props) => {
+const StaticPropsDetail = ({ item, errors }: Props): ReactElement => {
   if (errors) {
     return (
       <Layout title="Error | Next.js + TypeScript Example">
