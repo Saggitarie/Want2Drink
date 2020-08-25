@@ -14,10 +14,10 @@ const IndexPage = (): ReactElement => (
       <img className="form--left__img" src="/party.jpg" alt="Party" />
     </div>
     <div className="form--right">
-      <h1>Sign In</h1>
+      <h1 className="form--right__title">Sign In To Drink</h1>
       <div className="form__auth">
-        <div className="form__auth--line">LINE</div>
-        <div className="form__auth--google">Google Sign In</div>
+        <div className="form__auth--line btn">LINE</div>
+        <div className="form__auth--google btn">Google Sign In</div>
       </div>
       <div className="form__group">
         <input
@@ -26,7 +26,7 @@ const IndexPage = (): ReactElement => (
           placeholder="UserName"
           id="username"
         />
-        <label htmlFor="username" className="form_label">
+        <label htmlFor="username" className="form__label">
           User Name
         </label>
       </div>
@@ -37,11 +37,11 @@ const IndexPage = (): ReactElement => (
           placeholder="Password"
           id="password"
         />
-        <label htmlFor="password" className="form_label">
+        <label htmlFor="password" className="form__label">
           Password
         </label>
       </div>
-      <div>Sign In</div>
+      <div className="form__signin btn">Sign In</div>
     </div>
   </div>
 );
