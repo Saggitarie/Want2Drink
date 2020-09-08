@@ -1,6 +1,22 @@
-import '../styles/global.scss';
-import { ReactElement } from 'react';
+import { ReactElement, FC } from 'react';
+import { Provider } from 'react-redux';
+import { AppProps } from 'next/app';
+import { wrapper } from '../store';
 
-export default function App({ Component, pageProps }): ReactElement {
-  return <Component {...pageProps} />;
-}
+import '../styles/global.scss';
+
+// function App({ Component, pageProps }): ReactElement {
+//   return (
+//     <Provider store={store}>
+//       <Component {...pageProps} />
+//     </Provider>
+//   );
+// }
+
+// export default App;
+
+const WrappedApp: FC<AppProps> = ({ Component, pageProps }) => (
+  <Component {...pageProps} />
+);
+
+export default wrapper.withRedux(WrappedApp);
