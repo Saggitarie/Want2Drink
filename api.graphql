@@ -47,6 +47,10 @@ type Query {
   users(after: UserWhereUniqueInput, before: UserWhereUniqueInput, first: Int, last: Int): [User!]!
 }
 
+input StringFieldUpdateOperationsInput {
+  set: String
+}
+
 input StringFilter {
   contains: String
   endsWith: String
@@ -72,13 +76,13 @@ input UserCreateInput {
 }
 
 input UserUpdateInput {
-  id: String
-  name: String
+  id: StringFieldUpdateOperationsInput
+  name: StringFieldUpdateOperationsInput
 }
 
 input UserUpdateManyMutationInput {
-  id: String
-  name: String
+  id: StringFieldUpdateOperationsInput
+  name: StringFieldUpdateOperationsInput
 }
 
 input UserWhereInput {
