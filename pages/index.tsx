@@ -1,4 +1,5 @@
 import { ReactElement, useEffect, useState } from 'react';
+import { ApolloClient, InMemoryCache } from '@apollo/client';
 import { useSelector, useDispatch } from 'react-redux';
 import Head from 'next/head';
 import { GetStaticProps } from 'next';
@@ -10,6 +11,11 @@ export const getStaticProps: GetStaticProps = async (context) => {
     props: {},
   };
 };
+
+const client = new ApolloClient({
+  uri: 'http://localhost:4000/graphql',
+  cache: new InMemoryCache(),
+});
 
 const IndexPage = (): ReactElement => {
   const [isSignedIn, setisSignIn] = useState(false);
