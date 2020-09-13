@@ -3,7 +3,7 @@
 
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL")
+  url = "***"
 }
 
 generator client {
@@ -21,8 +21,8 @@ model User {
 model DrinkingLocations {
   id           String   @default(cuid()) @id
   locationName String
-  longtitude   Float
-  latitude     Float
+  longtitude   Int
+  latitude     Int
   createdAt    DateTime @default(now())
   user         User     @relation(fields: [userId], references: [id])
   userId       String

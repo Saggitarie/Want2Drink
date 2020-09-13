@@ -1,5 +1,5 @@
 import { ReactElement, useEffect, useState } from 'react';
-import { ApolloClient, InMemoryCache } from '@apollo/client';
+import { ApolloClient, InMemoryCache, gql, useMutation } from '@apollo/client';
 import { useSelector, useDispatch } from 'react-redux';
 import Head from 'next/head';
 import { GetStaticProps } from 'next';
@@ -12,22 +12,33 @@ export const getStaticProps: GetStaticProps = async (context) => {
   };
 };
 
-const client = new ApolloClient({
-  uri: 'http://localhost:4000/graphql',
-  cache: new InMemoryCache(),
-});
+const CreateOneUser = gql`
+  mutation CreateOneUser($username: String!, $password: String!) {
+    createOneUser(data: { username: $username, password: $password }) {
+      username
+      password
+    }
+  }
+`;
 
 const IndexPage = (): ReactElement => {
   const [isSignedIn, setisSignIn] = useState(false);
+  const [userName, setUserName] = useState('');
+  const [password, setPassword] = useState('');
+
+  const [createOneUser] = useMutation(CreateOneUser);
 
   useEffect(() => {
     console.log('isSignIn' + isSignedIn);
+    console.log('username ' + userName);
+    console.log('password ' + password);
+
     if (window.gapi.auth2) {
       const auth = window.gapi.auth2.getAuthInstance();
       const user = auth.currentUser.get();
       console.log(user);
     }
-  }, [isSignedIn]);
+  }, [isSignedIn, userName, password]);
 
   function lineLogin(): void {
     if (Window && typeof globalThis !== undefined) {
@@ -75,6 +86,10 @@ const IndexPage = (): ReactElement => {
     }
   }
 
+  function regularSignIn(): void {
+    createOneUser({ variables: { username: userName, password: password } });
+  }
+
   const app = useSelector<User, User['name']>((state) => state.name);
   console.log('Have access to store' + app);
   console.log(app);
@@ -114,6 +129,9 @@ const IndexPage = (): ReactElement => {
             className="form__input"
             placeholder="UserName"
             id="username"
+            onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+              setUserName(event.target.value);
+            }}
           />
           <label htmlFor="username" className="form__label">
             User Name
@@ -125,12 +143,22 @@ const IndexPage = (): ReactElement => {
             className="form__input"
             placeholder="Password"
             id="password"
+            onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+              setPassword(event.target.value);
+            }}
           />
           <label htmlFor="password" className="form__label">
             Password
           </label>
         </div>
-        <div className="form__signin btn">Sign In</div>
+        <button
+          className="form__signin btn"
+          onClick={(): void => {
+            regularSignIn();
+          }}
+        >
+          Sign In
+        </button>
       </div>
     </div>
   );
