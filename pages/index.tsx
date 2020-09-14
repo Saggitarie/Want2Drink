@@ -1,8 +1,10 @@
 import { ReactElement, useEffect, useState } from 'react';
-import { ApolloClient, InMemoryCache, gql, useMutation } from '@apollo/client';
+import { gql, useMutation, useQuery } from '@apollo/client';
 import { useSelector, useDispatch } from 'react-redux';
 import Head from 'next/head';
+import { useRouter } from 'next/router';
 import { GetStaticProps } from 'next';
+import bcrypt from 'bcryptjs';
 
 import { User, ActionTypes } from '../actions';
 
@@ -21,17 +23,33 @@ const CreateOneUser = gql`
   }
 `;
 
+const FetchUsers = gql`
+  query FetchUsers {
+    users {
+      id
+      username
+      password
+    }
+  }
+`;
+
 const IndexPage = (): ReactElement => {
   const [isSignedIn, setisSignIn] = useState(false);
   const [userName, setUserName] = useState('');
   const [password, setPassword] = useState('');
 
   const [createOneUser] = useMutation(CreateOneUser);
+  const { loading, error, data } = useQuery(FetchUsers);
+
+  const router = useRouter();
 
   useEffect(() => {
     console.log('isSignIn' + isSignedIn);
     console.log('username ' + userName);
     console.log('password ' + password);
+    console.log('users ');
+
+    if (data) console.log(data.users);
 
     if (window.gapi.auth2) {
       const auth = window.gapi.auth2.getAuthInstance();
@@ -87,7 +105,24 @@ const IndexPage = (): ReactElement => {
   }
 
   function regularSignIn(): void {
-    createOneUser({ variables: { username: userName, password: password } });
+    const isExist = data.users.find((el: any) => el.username === userName);
+    console.log(isExist, 'isExist');
+
+    if (!isExist) {
+      bcrypt.genSalt(10, (err, salt) => {
+        bcrypt.hash(password, salt, (err, hashedPassword) => {
+          console.log('Password Hashed', hashedPassword);
+
+          createOneUser({
+            variables: { username: userName, password: hashedPassword },
+          });
+
+          router.push('/about');
+        });
+      });
+
+      // console.log('Match??', bcrypt.compareSync(isExist.password, password));
+    }
   }
 
   const app = useSelector<User, User['name']>((state) => state.name);

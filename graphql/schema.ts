@@ -9,8 +9,8 @@ schema.objectType({
     t.string('id', { description: 'Id of the user' });
     t.string('username', { description: 'Name of the user' });
     t.string('password', { description: 'Encrypted password' });
-    t.field('DrinkingLocations', {
-      type: 'DrinkingLocations',
+    t.field('DrinkingLocation', {
+      type: 'DrinkingLocation',
     });
     t.field('Profile', {
       type: 'Profile',
@@ -19,7 +19,7 @@ schema.objectType({
 });
 
 schema.objectType({
-  name: 'DrinkingLocations',
+  name: 'DrinkingLocation',
   definition(t) {
     t.string('id', { description: 'Id of the Drinking location' });
     t.string('locationName', { description: 'Name of the Drinking Location' });
@@ -54,24 +54,7 @@ schema.queryType({
 schema.mutationType({
   definition(t) {
     t.crud.createOneUser();
-    t.crud.createOneDrinkingLocations();
+    t.crud.createOneDrinkingLocation();
     t.crud.createOneProfile();
   },
 });
-// schema.mutationType({
-//   definition(t) {
-//     t.field('bigRedButton', {
-//       type: 'String',
-//       async resolve(_parent, _args, ctx) {
-//         const { count } = await ctx.db.user.deleteMany({});
-//         return `${count} user(s) destroyed. Thanos will be proud.`;
-//       },
-//     });
-
-//     t.crud.createOneUser();
-//     t.crud.deleteOneUser();
-//     t.crud.deleteManyUser();
-//     t.crud.updateOneUser();
-//     t.crud.updateManyUser();
-//   },
-// });

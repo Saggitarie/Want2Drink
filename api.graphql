@@ -9,7 +9,7 @@ A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the
 """
 scalar DateTime
 
-type DrinkingLocations {
+type DrinkingLocation {
   """Time when the user started drinking"""
   createdAt: DateTime
 
@@ -30,7 +30,7 @@ type DrinkingLocations {
   userId: String
 }
 
-input DrinkingLocationsCreateInput {
+input DrinkingLocationCreateInput {
   createdAt: DateTime
   id: String
   latitude: Float!
@@ -39,12 +39,12 @@ input DrinkingLocationsCreateInput {
   user: UserCreateOneWithoutDrinkingLocationInput!
 }
 
-input DrinkingLocationsCreateOneWithoutUserInput {
-  connect: DrinkingLocationsWhereUniqueInput
-  create: DrinkingLocationsCreateWithoutUserInput
+input DrinkingLocationCreateOneWithoutUserInput {
+  connect: DrinkingLocationWhereUniqueInput
+  create: DrinkingLocationCreateWithoutUserInput
 }
 
-input DrinkingLocationsCreateWithoutUserInput {
+input DrinkingLocationCreateWithoutUserInput {
   createdAt: DateTime
   id: String
   latitude: Float!
@@ -52,7 +52,7 @@ input DrinkingLocationsCreateWithoutUserInput {
   longtitude: Float!
 }
 
-input DrinkingLocationsWhereUniqueInput {
+input DrinkingLocationWhereUniqueInput {
   id: String
 }
 
@@ -62,7 +62,7 @@ The `JSON` scalar type represents JSON objects as specified by [ECMA-404](http:/
 scalar Json
 
 type Mutation {
-  createOneDrinkingLocations(data: DrinkingLocationsCreateInput!): DrinkingLocations!
+  createOneDrinkingLocation(data: DrinkingLocationCreateInput!): DrinkingLocation!
   createOneProfile(data: ProfileCreateInput!): Profile!
   createOneUser(data: UserCreateInput!): User!
 }
@@ -102,7 +102,7 @@ type Query {
 }
 
 type User {
-  DrinkingLocations: DrinkingLocations
+  DrinkingLocation: DrinkingLocation
 
   """Id of the user"""
   id: String
@@ -116,7 +116,7 @@ type User {
 }
 
 input UserCreateInput {
-  drinkingLocation: DrinkingLocationsCreateOneWithoutUserInput
+  drinkingLocation: DrinkingLocationCreateOneWithoutUserInput
   id: String
   password: String!
   profile: ProfileCreateOneWithoutUserInput
@@ -141,7 +141,7 @@ input UserCreateWithoutDrinkingLocationInput {
 }
 
 input UserCreateWithoutProfileInput {
-  drinkingLocation: DrinkingLocationsCreateOneWithoutUserInput
+  drinkingLocation: DrinkingLocationCreateOneWithoutUserInput
   id: String
   password: String!
   username: String!
@@ -149,4 +149,5 @@ input UserCreateWithoutProfileInput {
 
 input UserWhereUniqueInput {
   id: String
+  username: String
 }
