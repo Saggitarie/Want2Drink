@@ -120,8 +120,6 @@ const IndexPage = (): ReactElement => {
           router.push('/about');
         });
       });
-
-      // console.log('Match??', bcrypt.compareSync(isExist.password, password));
     }
   }
 

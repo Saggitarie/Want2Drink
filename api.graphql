@@ -36,7 +36,7 @@ input DrinkingLocationCreateInput {
   latitude: Float!
   locationName: String!
   longtitude: Float!
-  user: UserCreateOneWithoutDrinkingLocationInput!
+  user: UserCreateOneWithoutDrinkingLocationInput
 }
 
 input DrinkingLocationCreateOneWithoutUserInput {
@@ -79,7 +79,7 @@ type Profile {
 input ProfileCreateInput {
   id: String
   image: String!
-  user: UserCreateOneWithoutProfileInput!
+  user: UserCreateOneWithoutProfileInput
 }
 
 input ProfileCreateOneWithoutUserInput {
