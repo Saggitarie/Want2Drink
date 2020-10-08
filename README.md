@@ -1,3 +1,10 @@
+# Announcement
+
+Recently, the GraphQL Nexus Server I was using made this announcement:
+https://github.com/prisma-labs/graphql-framework-experiment/issues/1432
+
+It seems like they are getting rid of the Nexus Framework I was using for this project. Need to refactor again with another alternative.
+
 # Want2Drink 
 
 Social matching app for users to meet drinking partner by location. 
