@@ -1,18 +1,23 @@
-import {Entity, PrimaryGeneratedColumn, Column} from "typeorm";
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  OneToMany,
+  BaseEntity,
+} from 'typeorm';
+import { DrinkingLocation } from './DrinkingLocations';
 
 @Entity()
-export class User {
+export class User extends BaseEntity {
+  @PrimaryGeneratedColumn()
+  id: number;
 
-    @PrimaryGeneratedColumn()
-    id: number;
+  @Column()
+  userName: string;
 
-    @Column()
-    firstName: string;
+  @Column()
+  password: string;
 
-    @Column()
-    lastName: string;
-
-    @Column()
-    age: number;
-
+  @OneToMany(() => DrinkingLocation, (photo) => photo.user)
+  photos: DrinkingLocation[];
 }

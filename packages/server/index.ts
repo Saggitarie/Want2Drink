@@ -1,7 +1,7 @@
-import express from "express";
+import express from 'express';
 
-import nextApp from "@monorepo/client";
-import apolloServer from "@monorepo/graphql";
+import nextApp from '@monorepo/client';
+import apolloServer from '@monorepo/graphql';
 
 const { PORT } = process.env;
 
@@ -19,7 +19,7 @@ async function main() {
 
 async function bootstrapClientApp(expressApp) {
   await nextApp.prepare();
-  expressApp.get("*", nextApp.getRequestHandler());
+  expressApp.get('*', nextApp.getRequestHandler());
 }
 
 async function bootstrapApolloServer(expressApp) {

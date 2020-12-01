@@ -19,8 +19,16 @@
     "skipLibCheck": true,
     "strict": true,
     "typeRoots": ["node_modules/@types", "types"],
-    "target": "esnext"
+    "target": "esnext",
+    "experimentalDecorators": true
   },
   "exclude": ["node_modules"],
-  "include": ["**/*.ts", "**/*.tsx", ".", "types.d.ts"]
+  "include": [
+    "**/*.ts",
+    "**/**/*.ts",
+    "**/**/**/*.ts",
+    "**/*.tsx",
+    ".",
+    "types.d.ts"
+  ]
 }

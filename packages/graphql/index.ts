@@ -1,4 +1,7 @@
-import { ApolloServer, gql } from "apollo-server-express";
+import { ApolloServer, gql } from 'apollo-server-express';
+
+import { LoginResolver } from '../graphql/modules/Login';
+import { buildSchema } from 'type-graphql';
 
 const typeDefs = gql`
   type Query {
@@ -8,10 +11,14 @@ const typeDefs = gql`
 
 const resolvers = {
   Query: {
-    hello: () => "Hello world!",
+    hello: () => 'Hello world!',
   },
 };
 
-const server = new ApolloServer({ typeDefs, resolvers });
+const schema: any = buildSchema({
+  resolvers: [LoginResolver],
+});
+
+const server = new ApolloServer({ schema });
 
 export default server;
